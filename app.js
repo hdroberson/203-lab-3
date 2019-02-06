@@ -1,10 +1,6 @@
 var express = require('express');
 var app = express();
-
 var Person;
-
-// ******** START MONGO DB CONFIG ********
-
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://ThiIsAPassword:TheRealPassword@cluster0-shard-00-00-euadh.mongodb.net:27017,cluster0-shard-00-01-euadh.mongodb.net:27017,cluster0-shard-00-02-euadh.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin', {
     useMongoClient: true
@@ -24,8 +20,6 @@ db.on('open', function () {
     });
     Person = mongoose.model('employee', personSchema);
 });
-
-// ********** END MONGO DB CONFIG *********
 
 
 app.get('/', function (req, res) {
@@ -49,7 +43,7 @@ app.get('/API/posttest', function (req, res) {
 });
 
 
-/*
+
 app.delete('/API/delete', function (req, res) {
     Person.find({ name: 'Billy' }, function (err, data) {
         if(err) {
@@ -58,7 +52,7 @@ app.delete('/API/delete', function (req, res) {
         res.json(data);
     });
 });
-*/
+
 
 
 app.listen(3000, function () {
